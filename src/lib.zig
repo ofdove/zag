@@ -6,7 +6,6 @@
 //! Supported platforms:
 //!   - macOS / iOS / BSD (kqueue)
 //!   - Linux (io_uring preferred, epoll + timerfd fallback)
-//!   - Windows (IOCP - work in progress)
 
 pub const Completion = @import("Completion.zig");
 pub const Loop = @import("Loop.zig");

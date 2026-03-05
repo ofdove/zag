@@ -4,8 +4,6 @@ const Completion = @import("Completion.zig");
 const Kqueue = @import("Kqueue.zig");
 const Epoll = @import("Epoll.zig");
 const IoUringBackend = @import("IoUring.zig");
-const Iocp = @import("Iocp.zig");
-
 const Loop = @This();
 
 /// The platform-specific backend, selected at comptime.
@@ -15,7 +13,6 @@ const Backend = switch (builtin.os.tag) {
     .freebsd, .netbsd, .openbsd, .dragonfly,
     => Kqueue,
     .linux => LinuxBackend,
-    .windows => Iocp,
     else => @compileError("unsupported OS for zag event loop"),
 };
 

@@ -6,7 +6,7 @@ A cross-platform, completion-based async I/O event loop for Zig.
 
 - **Completion-based API** - submit operations with callbacks, no async/await required
 - **Zero-allocation hot path** - intrusive linked lists and user-owned completions
-- **Cross-platform** - macOS/BSD (kqueue), Linux (io_uring with epoll fallback), Windows (IOCP, WIP)
+- **Cross-platform** - macOS/BSD (kqueue), Linux (io_uring with epoll fallback)
 - **TCP networking** - listen, accept, connect, recv, send
 - **Timers** - nanosecond-precision one-shot timers
 
@@ -135,7 +135,6 @@ zig build test     # run tests
 |----------------|----------------------------------|
 | macOS / BSD    | kqueue                          |
 | Linux          | io_uring (epoll fallback)       |
-| Windows        | IOCP (work in progress)         |
 
 ## License
 

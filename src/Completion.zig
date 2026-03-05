@@ -1,9 +1,6 @@
 const std = @import("std");
-const builtin = @import("builtin");
 const posix = std.posix;
 const Completion = @This();
-
-const is_windows = builtin.os.tag == .windows;
 
 /// Intrusive linked list pointer (used by the event loop)
 next: ?*Completion = null,
@@ -69,10 +66,6 @@ pub const AcceptError = error{
 /// Interpret the result as an accepted socket fd.
 pub fn acceptSocket(self: *const Completion) AcceptError!posix.socket_t {
     if (self.result < 0) return mapAcceptError(self.result);
-    if (is_windows) {
-        // On Windows, socket_t is an opaque pointer; result stores the raw handle value
-        return @ptrFromInt(@as(usize, @intCast(self.result)));
-    }
     return @intCast(self.result);
 }
 
